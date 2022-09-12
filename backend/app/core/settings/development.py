@@ -4,6 +4,6 @@ class DevelopmentAppSettings(AppSettings):
     debug: bool = True 
     title: str = "3Dinner development"
     class Config:
-        env_file = ".env"
+        env_file = "dev.env"
 
 settings = DevelopmentAppSettings()

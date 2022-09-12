@@ -1,5 +1,6 @@
 from typing import List
 from sqlalchemy.orm import Session
+from sqlalchemy import tuple_
 
 from app.services.crud.base import CRUDBase
 
@@ -18,6 +19,15 @@ class CRUDProducto(CRUDBase[Producto, ProductoCreate, ProductoUpdate]):
                 limit(limit).
                 all()
                 )
+    
+    def get_multi_ids(
+        self, db: Session, list_ids: List[int]
+    ) -> List[Producto]:
+        return (
+            db.query(self.model).
+            filter(Producto.id.in_(list_ids)).
+            all()
+        )
 
 
 producto = CRUDProducto(Producto)

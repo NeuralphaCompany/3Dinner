@@ -22,19 +22,19 @@ services:
     env_file:
       - .env
   
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    depends_on:
-      - pgadmin
-    env_file:
-      - .env
-    restart: on-failure
-    networks:
-      - local-net
-    ports:
-      - "8000:8001"
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - pgadmin
+  #   env_file:
+  #     - .env
+  #   restart: on-failure
+  #   networks:
+  #     - local-net
+  #   ports:
+  #     - "8000:8001"
 
 networks:
   local-net:

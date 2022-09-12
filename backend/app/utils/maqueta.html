@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+</head>
+<div class="container">
+    <div style="width: 100%;">
+        <header>
+            <img src="../assets/images/logo.svg" height="150px" class="logo">
+            <span>Fecha</span>
+        </header>
+        <div class="Info-empresa">
+            <div class="informacion">
+                <span>Razón social:</span>
+                <span>Nit: </span>
+                <span>
+                    Teléfono:
+                </span>
+                <span>Resolución Dian: </span>
+                <span>Dirección: </span>
+                <span>Responsable de IVA </span>
+            </div>
+            <span class="consecutivo">No. 10000</span>
+        </div>
+        <hr>
+
+        <div class="compra">
+            <table class="default">
+                <thead>
+                    <tr>
+                        <th class="cantidad" colspan="1">CANTIDAD</th>
+                        <th colspan="3">Descripcion</th>
+                        <th colspan="2">VALOR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="cantidad">{{cantidad}}</td>
+                        <td colspan="3">{{descripción}}</td>
+                        <td colspan="2">{{valor}}</td>
+                    </tr>
+                </tbody>
+                
+                
+            </table>
+            <div class="resume">
+                <span> SUBTOTAL: {{subtotal}}</span>
+                <span> Total impuestos: {{impuestos}}</span>
+                <span><b>Total: {{total}}</b></span>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+    <footer>
+        <span>Aquí el cliente agrega un disclaimer de su negocio</span>
+        <span>Desarrollado por <a href="http://www.neuralpha-dev.com">Neuralpha ® </a></span>
+    </footer>
+</div>
+
+</html>

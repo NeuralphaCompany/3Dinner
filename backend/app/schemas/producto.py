@@ -57,8 +57,8 @@ class ProductoCreate(BaseModel):
         example=1,
         gt=0,
     )
-    baseIva: Optional[int] = 0
-    adiciones: Optional[List[int]] or List[str]
+    BaseIVA: Optional[int] = 0
+    # adiciones: Optional[List[int]] or List[str]
 
 
 

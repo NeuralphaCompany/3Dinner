@@ -16,5 +16,5 @@ class User(Base):
     name = Column(String(255), nullable=False)
     cellphone = Column(String(255), nullable=True)
     is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime, default = func.now())
+    created_at = Column(DateTime(timezone=True), default = func.now())
     ventas = relationship("Venta", back_populates="user")
