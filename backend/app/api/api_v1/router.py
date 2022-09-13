@@ -5,7 +5,8 @@ from app.api.api_v1.routes import (product,
                                    user,
                                    employee,
                                    login,
-                                   venta
+                                   venta,
+                                   media
                                    )
 
 
@@ -18,3 +19,4 @@ api_route.include_router(
     employee.router, prefix="/employee", tags=["employee"])
 api_route.include_router(login.router, prefix="/login", tags=["login"])
 api_route.include_router(venta.router, prefix="/venta", tags=["venta"])
+api_route.include_router(media.router, prefix="/media", tags=["media"])
