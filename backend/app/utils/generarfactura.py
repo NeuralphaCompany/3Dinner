@@ -1,13 +1,17 @@
-import os
-from typing import List
-from urllib import request
 from weasyprint import HTML, CSS
 from datetime import datetime
 
-from app.schemas.producto import Producto
+from sqlalchemy.orm import Session
+
+from app.schemas.venta import VentaInDB
+from app.services import crud
+from app.assets import imagesdir, facturasdir
 
 
-def generate(productos: List[Producto], venta_id: int) -> None:
+def generate(db:Session, *, venta: VentaInDB) -> bytes or None:
+
+    productsid = [product['id'] for product in venta.productos]
+    productos = crud.producto.get_multi_ids(db, list_ids=productsid)
 
     tabla = ''
     total = 0
@@ -25,8 +29,6 @@ def generate(productos: List[Producto], venta_id: int) -> None:
         subtotal += int(producto.price*((100-producto.BaseIVA)*0.01))
         impuestos += int(producto.price*(producto.BaseIVA)*0.01)
         total += producto.price
-    appdir = os.path.dirname(os.path.dirname(__file__))
-    base_url = os.path.join(appdir, 'assets/images/')
     html = HTML(string=f'''
     <!DOCTYPE html>
     <html>
@@ -47,7 +49,7 @@ def generate(productos: List[Producto], venta_id: int) -> None:
                         <span>Dirección: </span>
                         <span>Responsable de IVA </span>
                     </div>
-                    <span class="consecutivo">No. {venta_id}</span>
+                    <span class="consecutivo">No. {venta.id}</span>
                 </div>
                 <hr>
 
@@ -82,7 +84,7 @@ def generate(productos: List[Producto], venta_id: int) -> None:
             </div>
         </div>
     </html>
-    ''', base_url=base_url)
+    ''', base_url=imagesdir)
     css = CSS(string='''
     @page {
         size: A2;
@@ -198,6 +200,6 @@ def generate(productos: List[Producto], venta_id: int) -> None:
         '''
               )
 
-    html.write_pdf(target=os.path.join(appdir,f'assets/facturas/factura_{venta_id}.pdf'), stylesheets=[css],)
-
-    return None
+    factura = html.write_pdf(target=facturasdir+f'factura_{venta.id}.pdf', stylesheets=[css],)
+    
+    return factura

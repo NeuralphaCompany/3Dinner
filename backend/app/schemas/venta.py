@@ -3,11 +3,15 @@ from datetime import datetime
 
 from pydantic import BaseModel
 
+class ProductoInside(BaseModel):
+    id: int
+    quantity: int
+
 class VentaBase(BaseModel):
-    productos : List[int]
+    productos : List[ProductoInside]
     adiciones : Optional[List[int]]
     cantidadxadiciones : Optional[List[int]]
-    created_at : datetime
+    created_at : Optional[datetime]
     user_id : Optional[int] = 1
 
 class VentaCreate(VentaBase):

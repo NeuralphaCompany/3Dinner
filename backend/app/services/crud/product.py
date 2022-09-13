@@ -11,7 +11,7 @@ from app.schemas.producto import ProductoCreate, ProductoUpdate
 
 class CRUDProducto(CRUDBase[Producto, ProductoCreate, ProductoUpdate]):
     def get_multi_by_category(
-        self, db: Session, *, skip: int = 0, limit: int = 100, category_id: int
+        self, db: Session, *, skip: int = 0, limit: int = 100, category_id: int = 1
     ) -> List[Producto]:
         return (db.query(self.model).
                 filter(Producto.category_id == category_id).
@@ -19,9 +19,9 @@ class CRUDProducto(CRUDBase[Producto, ProductoCreate, ProductoUpdate]):
                 limit(limit).
                 all()
                 )
-    
+
     def get_multi_ids(
-        self, db: Session, list_ids: List[int]
+        self, db: Session, *, list_ids: List[int]
     ) -> List[Producto]:
         return (
             db.query(self.model).

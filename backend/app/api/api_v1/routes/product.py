@@ -1,5 +1,5 @@
 
-from typing import Any, List
+from typing import Any
 
 from fastapi import APIRouter, Depends, status, HTTPException
 from fastapi.responses import JSONResponse
@@ -7,10 +7,10 @@ from fastapi.encoders import jsonable_encoder
 
 from sqlalchemy.orm import Session
 
-from app.api.dependencies import db
-from app import models, schemas
+from app.api.dependencies import db, jwt_bearer
+from app import schemas
 from app.services import crud
-from app.api.dependencies import jwt_bearer
+
 
 router = APIRouter()
 
@@ -79,6 +79,8 @@ def read_product(
     """
 
     db_product = crud.producto.get(db=db, id=product_id)
+    if not db_product:
+        HTTPException(404, "Product not found")
     return db_product
 
 
@@ -102,10 +104,8 @@ def update_product(
 
     db_obj = crud.producto.get(db=db, id=product_id)
 
-    if db_obj is None:
-        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={
-            'detail': 'Product not found'
-        })
+    if not db_obj:
+        return HTTPException(404, "Product not found")
     else:
         db_product = crud.producto.update(
             db=db, db_obj=db_obj, obj_in=producto)
