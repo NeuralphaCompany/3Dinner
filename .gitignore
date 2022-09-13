@@ -102,14 +102,13 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+*.env
 .venv
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
-dev.env
 
 # Spyder project settings
 .spyderproject
@@ -138,3 +137,16 @@ dmypy.json
 *.jpeg
 *.pdf
 *.svg
+
+### VisualStudioCode ###
+.vscode/*      # Maybe .vscode/**/* instead - see comments
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+**/.history
+
+settings.json

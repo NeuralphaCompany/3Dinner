@@ -1,0 +1,66 @@
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" [routerLink]="['/']">
+        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      </a>
+  
+      <a role="button is-primary" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="false"></span>
+        <span aria-hidden="false"></span>
+        <span aria-hidden="false"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" [routerLink]="['/']">
+          Home
+        </a>
+  
+        <a class="navbar-item" [routerLink]="['/categorias']">
+          categorías
+        </a>
+        <a class="navbar-item" [routerLink]="['/productos']">
+            productos
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Panel de control
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item" [routerLink]="['/categorias']">
+              categorías
+            </a>
+            <a class="navbar-item" [routerLink]="['/productos']">
+              productos
+            </a>
+            <a class="navbar-item" [routerLink]="['/usuarios']">
+              usuarios
+            </a>
+            <a class="navbar-item" [routerLink]="['/ventas']">
+                ventas
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item" [routerLink]="['/empleados']">
+              empleados
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-success">
+              <strong>Registrarse</strong>
+            </a>
+            <a class="button is-primary" [routerLink]="['/login']">
+              ingresar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

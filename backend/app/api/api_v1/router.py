@@ -1,12 +1,12 @@
 from fastapi import APIRouter
 
 from app.api.api_v1.routes import (product,
-    category,
-    user,
-    employee,
-    login,
-    venta
-    )
+                                   category,
+                                   user,
+                                   employee,
+                                   login,
+                                   venta
+                                   )
 
 
 api_route = APIRouter()
