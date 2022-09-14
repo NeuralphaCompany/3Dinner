@@ -1,4 +1,7 @@
 from typing import Any, Dict, Union
+
+from fastapi import HTTPException
+
 from sqlalchemy.orm import Session
 
 
@@ -56,11 +59,11 @@ class CRUDEmployee(CRUDBase[Employee, EmployeeCreate, EmployeeUpdate]):
         user = self.get_by_email(db, email=email) or self.get_by_cellphone(
             db, cellphone=cellphone)
         if not user:
-            raise Exception('User not found')
+            raise HTTPException(status_code=404, detail='Invalid password or email') 
         if not user.is_active:
-            raise Exception('User not active')
+            raise HTTPException(status_code=404, detail='Employee not active')
         if not check_password(password, user.hashed_password):
-            raise Exception('Invalid password')
+            raise HTTPException(status_code=401, detail='Invalid password or email')
         return user
 
     def is_active(self, db: Session, *, user: Employee) -> bool:

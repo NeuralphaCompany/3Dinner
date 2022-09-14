@@ -1,6 +1,6 @@
 <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" [routerLink]="['/']">
+      <a class="navbar-item" [routerLink]="['/home']">
         <img [src]="prefix+'media/images/logo.png'">
         <span> 3Dinner</span>
       </a>
@@ -14,33 +14,33 @@
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" [routerLink]="['/']">
+        <a class="navbar-item" [routerLink]="['/home']">
           Home
         </a>
   
-        <a class="navbar-item" [routerLink]="['/categorias']">
+        <a class="navbar-item" [routerLink]="['/home']">
           categorías
         </a>
         <a class="navbar-item" [routerLink]="['/productos']">
             productos
         </a>
   
-        <div class="navbar-item has-dropdown is-hoverable">
+        <div *ngIf="isLoged" class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             Panel de control
           </a>
   
           <div class="navbar-dropdown">
-            <a class="navbar-item" [routerLink]="['/categorias']">
+            <a class="navbar-item" [routerLink]="['panel-control/categorias']">
               categorías
             </a>
-            <a class="navbar-item" [routerLink]="['/productos']">
+            <a class="navbar-item" [routerLink]="['panel-control/productos']">
               productos
             </a>
-            <a class="navbar-item" [routerLink]="['/usuarios']">
+            <a class="navbar-item" [routerLink]="['panel-control/usuarios']">
               usuarios
             </a>
-            <a class="navbar-item" [routerLink]="['/ventas']">
+            <a class="navbar-item" [routerLink]="['panel-control/ventas']">
                 ventas
             </a>
             <hr class="navbar-divider">
@@ -54,12 +54,15 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-success">
-              <strong>Registrarse</strong>
+            <a *ngIf="isLoged" class="button is-success">
+              <strong>Registrar empleado</strong>
             </a>
-            <a class="button is-primary" [routerLink]="['/login']">
+            <a *ngIf="!isLoged" class="button is-primary" [routerLink]="['/login']">
               ingresar
             </a>
+            <button *ngIf="isLoged" class="button is-primary" [routerLink]="['/']" (click)="logOut()" >
+              Salir
+            </button>
           </div>
         </div>
       </div>

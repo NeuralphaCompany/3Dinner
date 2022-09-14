@@ -35,8 +35,11 @@
       "@data/*": [
         "src/app/shared/data/*"
       ],
-      "environments/*": [
+      "@environments/*": [
         "src/environments/*"
+      ],
+      "@interfaces/*": [
+        "src/app/core/interfaces/*"
       ]
     }
   },

@@ -34,7 +34,7 @@ def get_images(
     return FileResponse(imagesdir+name)
 
 
-@router.post('/images')
+@router.post('/images/')
 def post_images(
     *,
     files: List[UploadFile],

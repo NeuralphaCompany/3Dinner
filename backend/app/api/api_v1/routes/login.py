@@ -25,17 +25,12 @@ def login_access_token(
     OAuth2 compatible token login, get an access token for future requests
     """
     user = crud.employee.authenticate(
-        db, email=form_data.username, password=form_data.password)
-    if not user:
-        raise HTTPException(
-            status_code=400, detail="Incorrect email or password")
-    elif not crud.employee.is_active(db=db, user=user):
-        raise HTTPException(status_code=400, detail="Inactive user")
+        db, email=form_data.username, cellphone=form_data.username, password=form_data.password)
+    minutes = settings.access_token_expires_minutes
     access_token_expires = timedelta(
-        minutes=settings.access_token_expires_minutes)
-    return {
-        "access_token": security.create_access_token(
+        minutes=minutes)
+    access_token = security.create_access_token(
             user.id, expires_delta=access_token_expires
-        ),
-        "token_type": "bearer",
-    }
+        )
+    response = schemas.Token(access_token=access_token, token_type='bearer', expires=minutes/24/60)
+    return response

@@ -9,6 +9,11 @@ import { RecuperarContrasenaComponent } from './shared/pages/recuperar-contrasen
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { RegistrarUsuarioComponent } from './shared/pages/registrar-usuario/registrar-usuario.component';
+import { CartComponent } from './shared/component/cart/cart.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorsInterceptor } from './core/interceptors/errors.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -18,13 +23,24 @@ import { RegistrarUsuarioComponent } from './shared/pages/registrar-usuario/regi
     RecuperarContrasenaComponent,
     HeaderComponent,
     FooterComponent,
-    RegistrarUsuarioComponent
+    RegistrarUsuarioComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorsInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

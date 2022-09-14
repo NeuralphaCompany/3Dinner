@@ -5,33 +5,23 @@ import { LoginComponent } from '@shared/pages/login/login.component';
 const routes: Routes =
   [
     {
-      path: 'usuarios',
-      loadChildren: () => import('./modules/usuarios/usuarios.module')
-        .then(m => m.UsuariosModule)
+      path: 'panel-control',
+      loadChildren: () => import('./modules/panel-control/panel-control.module')
+        .then(m => m.PanelControlModule)
     },
     {
-      path: 'empleados',
-      loadChildren: () => import('./modules/empleados/empleados.module')
-        .then(m => m.EmpleadosModule)
-    },
-    {
-      path: 'productos',
-      loadChildren: () => import('./modules/productos/productos.module')
-        .then(m => m.ProductosModule)
-    },
-    {
-      path: 'categorias',
-      loadChildren: () => import('./modules/categorias/categorias.module')
-        .then(m => m.CategoriasModule)
-    },
-    {
-      path: 'ventas',
-      loadChildren: () => import('./modules/ventas/ventas.module')
-        .then(m => m.VentasModule)
+      path: 'home',
+      loadChildren: () => import('./modules/interfaz-usuario/interfaz-usuario.module')
+        .then(m => m.InterfazUsuarioModule)
     },
     {
       path: 'login',
       component: LoginComponent
+    },
+    {
+      path:'',
+      redirectTo: 'home',
+      pathMatch: 'full'
     }
   ];
 
