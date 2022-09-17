@@ -4,5 +4,14 @@
     max-width: 1024px;
 }
 
+:host {
+    height: 100%
+}
+
+app-root {
+    display: block;
+    height: 100%;
+  }
+
 @import "../node_modules/bulma/bulma.sass";
 @import '../node_modules/@sweetalert2/theme-bulma/bulma.scss';

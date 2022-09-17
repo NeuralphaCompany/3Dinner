@@ -1,6 +1,6 @@
-<div class="container block box is-centered is-fullhd columns mt-4">
+<div class="container is-clickable is-multiline is-centered is-mobile columns mt-2">
     
-    <div class="column is-one-quarter-desktop is-for-quarters-mobile is-two-quarters-tablet" *ngFor="let category of categories">
+    <div class="column is-one-third-desktop is-half-mobile is-half-tablet" *ngFor="let category of categories">
         <div class="card" [routerLink]="['/productos', category.id]">
             <div class="card-image">
                 <figure class="image is-4by3">

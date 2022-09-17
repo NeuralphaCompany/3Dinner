@@ -1,11 +1,11 @@
-<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+<nav class="navbar is-dark p-2" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" [routerLink]="['/home']">
-        <img [src]="prefix+'media/images/logo.png'">
+        <img class="mr-2" [src]="prefix+'media/images/logo.png'">
         <span> 3Dinner</span>
       </a>
   
-      <a role="button is-primary" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <a id="burger" role="button is-primary" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="false"></span>
         <span aria-hidden="false"></span>
         <span aria-hidden="false"></span>
@@ -14,14 +14,14 @@
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" [routerLink]="['/home']">
+        <a class="navbar-item" (click)="toggleMenu($event)" [routerLink]="['/home']">
           Home
         </a>
   
-        <a class="navbar-item" [routerLink]="['/home']">
+        <a class="navbar-item" (click)="toggleMenu($event)" [routerLink]="['/home']">
           categorías
         </a>
-        <a class="navbar-item" [routerLink]="['/productos']">
+        <a class="navbar-item" (click)="toggleMenu($event)" [routerLink]="['/productos']">
             productos
         </a>
   
@@ -31,20 +31,20 @@
           </a>
   
           <div class="navbar-dropdown">
-            <a class="navbar-item" [routerLink]="['panel-control/categorias']">
+            <a class="navbar-item" (click)="toggleMenu($event)" [routerLink]="['panel-control/categorias']">
               categorías
             </a>
-            <a class="navbar-item" [routerLink]="['panel-control/productos']">
+            <a class="navbar-item" (click)="toggleMenu($event)" [routerLink]="['panel-control/productos']">
               productos
             </a>
-            <a class="navbar-item" [routerLink]="['panel-control/usuarios']">
+            <a class="navbar-item" (click)="toggleMenu($event)" [routerLink]="['panel-control/usuarios']">
               usuarios
             </a>
-            <a class="navbar-item" [routerLink]="['panel-control/ventas']">
+            <a class="navbar-item" (click)="toggleMenu($event)" [routerLink]="['panel-control/ventas']">
                 ventas
             </a>
             <hr class="navbar-divider">
-            <a class="navbar-item" [routerLink]="['/empleados']">
+            <a class="navbar-item" (click)="toggleMenu($event)" [routerLink]="['/empleados']">
               empleados
             </a>
           </div>
@@ -54,13 +54,13 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a *ngIf="isLoged" class="button is-success">
+            <a *ngIf="isLoged" class="button is-success is-rounded">
               <strong>Registrar empleado</strong>
             </a>
-            <a *ngIf="!isLoged" class="button is-primary" [routerLink]="['/login']">
+            <a *ngIf="!isLoged" class="button is-info is-rounded" (click)="toggleMenu($event)" [routerLink]="['/login']">
               ingresar
             </a>
-            <button *ngIf="isLoged" class="button is-primary" [routerLink]="['/']" (click)="logOut()" >
+            <button *ngIf="isLoged" class="button is-info is-rounded" (click)="toggleMenu($event)" [routerLink]="['/home']" (click)="logOut()" >
               Salir
             </button>
           </div>

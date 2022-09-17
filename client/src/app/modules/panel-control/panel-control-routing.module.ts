@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoriasComponent } from './categorias/categorias.component';
+import { CrearCategoriasComponent } from './categorias/pages/crear-categorias/crear-categorias.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { PanelControlComponent } from './panel-control.component';
 import { ProductosComponent } from './productos/productos.component';
@@ -14,11 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'empleados',
-    component: EmpleadosComponent
+    loadChildren: () => import('./empleados/empleados.module')
+      .then(m => m.EmpleadosModule)
   },
   {
     path: 'categorias',
-    component: CategoriasComponent
+    loadChildren: () => import('./categorias/categorias.module')
+      .then(m => m.CategoriasModule)
   },
   {
     path: 'productos',

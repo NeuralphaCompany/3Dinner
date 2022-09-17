@@ -31,4 +31,13 @@ export class HeaderComponent implements OnInit {
     this.authSvc.logOut();
   }
 
+  toggleMenu(e:any) {
+    let menu = document.getElementById('navbarBasicExample')
+    let burger = document.getElementById('burger')
+    if(menu && burger) {
+      menu.classList.remove('is-active');
+      burger.classList.remove('is-active');
+    }
+  }
+
 }

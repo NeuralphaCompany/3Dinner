@@ -4,6 +4,17 @@
         max-width: 1024px;
         margin: auto;
         padding: auto;
+        overflow: hidden;
     }
 }
 
+@media screen and (max-width: 480px){ 
+    .container{
+        margin: 1em;
+    }
+}
+
+.card:hover{
+    transform: scale(1.05);
+    transition: ease-in-out 0.1s;
+}

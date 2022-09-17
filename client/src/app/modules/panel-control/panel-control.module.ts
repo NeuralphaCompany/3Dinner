@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { PanelControlRoutingModule } from './panel-control-routing.module';
 import { PanelControlComponent } from './panel-control.component';
+import { SharedModule } from '@shared/shared.module';
+import { CategoriasComponent } from './categorias/categorias.component';
 
 
 @NgModule({
   declarations: [
-    PanelControlComponent
+    PanelControlComponent,
+    // CategoriasComponent
   ],
   imports: [
     CommonModule,
-    PanelControlRoutingModule
+    PanelControlRoutingModule,
+    SharedModule
   ]
 })
 export class PanelControlModule { }

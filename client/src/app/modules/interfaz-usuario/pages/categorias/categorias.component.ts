@@ -20,7 +20,7 @@ export class CategoriasComponent implements OnInit {
   constructor(
     private categoriesSvc : CategoriasService
   ) { 
-    this.categoriesSvc.getCategories().subscribe({
+    this.categoriesSvc.getCategorias().subscribe({
       next: (data : CategoryResponse) => {
         this.categories = data.results
       },
