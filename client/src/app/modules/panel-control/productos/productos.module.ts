@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProductosRoutingModule } from './productos-routing.module';
 import { ProductosComponent } from './productos.component';
+import { CategoriasComponent } from '../categorias/categorias.component';
 
 
 @NgModule({

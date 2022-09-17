@@ -40,6 +40,9 @@
       ],
       "@interfaces/*": [
         "src/app/core/interfaces/*"
+      ],
+      "@node/*":[
+        "node_modules/*"
       ]
     }
   },

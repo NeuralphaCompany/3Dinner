@@ -1,3 +1,4 @@
+import os
 from typing import Any, List
 
 from fastapi import APIRouter, Depends, status
@@ -9,6 +10,7 @@ from sqlalchemy.orm import Session
 from app.api.dependencies import db, jwt_bearer
 from app import schemas
 from app.services import crud
+from app.assets import imagesdir
 router = APIRouter()
 
 
@@ -111,7 +113,7 @@ def update_category(
     return db_category
 
 
-@router.delete("/{category_id}", status_code=200)
+@router.delete("/{category_id}", status_code=204)
 def delete_category(
     *,
     db: Session = Depends(db.get_db),
@@ -135,7 +137,7 @@ def delete_category(
             'detail': 'Not found'
         })
     db_category = crud.categoria.delete(db=db, id=category_id)
-    return db_category
+    os.remove(imagesdir + db_obj.image)
 
 
 @router.get("/{category_id}/products", status_code=200)

@@ -1,7 +1,8 @@
 @charset "utf-8";
 
 .container{
-    max-width: 1024px;
+    max-width: 1024px !important;
+    min-height: 90vh !important;
 }
 
 :host {
@@ -15,3 +16,6 @@ app-root {
 
 @import "../node_modules/bulma/bulma.sass";
 @import '../node_modules/@sweetalert2/theme-bulma/bulma.scss';
+// @import "~swiper/swiper";
+@import 'swiper/scss';
+@import 'swiper/css/bundle';

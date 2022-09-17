@@ -1,4 +1,4 @@
-from os import remove
+from os import remove, path
 from typing import Any, List
 from uuid import uuid1
 
@@ -31,6 +31,12 @@ def get_images(
         return: image
     '''
 
+    file = path.exists(imagesdir+name)
+
+    if not file:
+        JSONResponse(status.HTTP_204_NO_CONTENT
+                     )
+
     return FileResponse(imagesdir+name)
 
 
@@ -38,7 +44,8 @@ def get_images(
 def post_images(
     *,
     files: List[UploadFile],
-    Employee : schemas.Employee = Depends(jwt_bearer.get_current_active_employee)
+    Employee: schemas.Employee = Depends(
+        jwt_bearer.get_current_active_employee)
 ) -> Any:
     '''
     Endpoint for post an image
@@ -52,7 +59,7 @@ def post_images(
         content_type = file.content_type
 
         if not (content_type == 'image/jpeg' or content_type == 'image/png'):
-            return JSONResponse(status_code=406, content={'detail':'Invalid type'})
+            return JSONResponse(status_code=406, content={'detail': 'Invalid type'})
 
         name = str(uuid1()) + '.' + content_type.split('/')[1]
 

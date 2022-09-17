@@ -8,7 +8,7 @@ import { Category, CategoryResponse } from '../interfaces/categoria';
 })
 export class CategoriasService {
 
-  private prefix = prefix + 'category'
+  private prefix = prefix + 'category/'
 
   constructor(
     private http: HttpClient
@@ -20,5 +20,9 @@ export class CategoriasService {
 
   postCategorias(category:Category){
     return this.http.post<CategoryResponse>(this.prefix, category)
+  }
+
+  deleteCategoria(id:number | string) {
+    return this.http.delete(this.prefix + id)
   }
 }

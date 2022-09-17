@@ -49,7 +49,11 @@ export class CrearCategoriasComponent implements OnInit {
             {
               title: 'La categoría se creó correctamente',
               icon: 'success',
-              confirmButtonText: 'Aceptar'
+              confirmButtonText: 'Aceptar',
+              buttonsStyling: false,
+              customClass: {
+                confirmButton: 'button is-success is-rounded'
+              }
             }
           ).then((result) => {
             if (result.isConfirmed){

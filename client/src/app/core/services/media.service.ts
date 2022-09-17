@@ -7,7 +7,7 @@ import { prefix } from '@shared/data/ruta.api';
 })
 export class MediaService {
 
-  endpoint = prefix + 'media/images'
+  endpoint = prefix + 'media/images/'
 
   constructor(
     private http : HttpClient

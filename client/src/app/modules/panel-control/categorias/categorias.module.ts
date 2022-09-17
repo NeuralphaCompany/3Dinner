@@ -8,14 +8,13 @@ import { CrearCategoriasComponent } from './pages/crear-categorias/crear-categor
 import { EditarCategoriasComponent } from './pages/editar-categorias/editar-categorias.component';
 import { SharedModule } from '@shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { SwiperModule } from "swiper/angular";
 
 
 @NgModule({
   declarations: [
-    CategoriasComponent,
-    VerCategoriasComponent,
-    CrearCategoriasComponent,
-    EditarCategoriasComponent
+    
+    
   ],
   imports: [
     CommonModule,
