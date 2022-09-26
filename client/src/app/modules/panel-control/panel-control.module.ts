@@ -8,6 +8,9 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { CrearCategoriasComponent } from './categorias/pages/crear-categorias/crear-categorias.component';
 import { EditarCategoriasComponent } from './categorias/pages/editar-categorias/editar-categorias.component';
 import { VerCategoriasComponent } from './categorias/pages/ver-categorias/ver-categorias.component';
+import { ProductosComponent } from './productos/productos.component';
+import { VerProductosComponent } from './productos/pages/ver-productos/ver-productos.component';
+import { EditarProductosComponent } from './productos/pages/editar-productos/editar-productos.component';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { VerCategoriasComponent } from './categorias/pages/ver-categorias/ver-ca
     CategoriasComponent,
     VerCategoriasComponent,
     CrearCategoriasComponent,
-    EditarCategoriasComponent
+    EditarCategoriasComponent,
+    ProductosComponent,
+    VerProductosComponent,
+    EditarProductosComponent
   ],
   imports: [
     CommonModule,
