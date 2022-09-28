@@ -14,7 +14,7 @@
                     <div class="control">
                         <div class="select is-rounded" style="width:100%;">
                             <select formControlName="category_id" placeholder="categoría" style="width: 100%;">
-                                <option hidden selected>Selecciona una categoría</option>
+                                <option hidden selected>Categoría</option>
                                 <option *ngFor="let category of categorias?.results; let i=index" [value]="category.id">
                                     {{category.name}}</option>
                             </select>
@@ -34,6 +34,29 @@
                         </textarea>
                     </p>
                 </div>
+
+                <div class="column is-full-mobile is-half-desktop is-half-tablet">
+                    <p class="control">
+                        <input type="number" formControlName="price" class="input is-rounded" placeholder="Precio">
+                    </p>
+                </div>
+
+                <div class="column is-full-mobile is-half-desktop is-half-tablet">
+                    <p class="control">
+                        <input type="number" formControlName="BaseIVA" class="input is-rounded"
+                            placeholder="% de impuesto">
+                    </p>
+                </div>
+                <div class="column is-full">
+                    <p class="control">
+                        <ng-select class="custom" [items]="items" [addTag]="true" placeholder="Tocineta"
+                            [multiple]="true" [selectOnTab]="true" [isOpen]="false" formControlName="Ingredients">
+
+                        </ng-select>
+                    </p>
+
+                </div>
+
             </div>
             <div class="file is-centered is-primary mt-5 has-name is-boxed">
                 <label class="file-label">
@@ -54,7 +77,7 @@
             </div>
             <div class="buttons is-flex is-justify-content-flex-end mt-5 w-100">
                 <button class="button is-danger is-rounded is-medium" routerLink="../../"> Cancelar </button>
-                <button class="button is-success is-rounded is-medium" type="submit" [disabled]="form.invalid">
+                <button class="button is-success is-rounded is-medium" type="submit">
                     Crear
                 </button>
             </div>

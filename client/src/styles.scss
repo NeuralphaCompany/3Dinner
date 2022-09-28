@@ -14,6 +14,20 @@ app-root {
     height: 100%;
   }
 
+// ::ng-deep tag-input .ng2-tag-input.foundation-theme {
+//     @include input;
+// }
+
+// // apply theme to the tags
+// ::ng-deep tag-input .ng2-tag-input.foundation-theme tag {
+//     @include tag;
+// }
+
+// // apply theme to the delete icon
+// ::ng-deep tag-input .ng2-tag-input.foundation-theme tag delete-icon {
+//     @include icon-theme($foundation-icon-theme);
+// }
+
 @import "../node_modules/bulma/bulma.sass";
 @import '../node_modules/@sweetalert2/theme-bulma/bulma.scss';
 // @import "~swiper/swiper";

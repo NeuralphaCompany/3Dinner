@@ -6,6 +6,7 @@ import { CategoriasService } from '@services/categorias.service';
 import { MediaService } from '@services/media.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-crear-productos',
   templateUrl: './crear-productos.component.html',
@@ -15,6 +16,7 @@ export class CrearProductosComponent implements OnInit {
 
   files: any[] | undefined
   categorias: CategoryResponse | undefined;
+  items : string[] = []
 
   constructor(
     private fb: FormBuilder,
@@ -35,7 +37,7 @@ export class CrearProductosComponent implements OnInit {
     short_description: ['', [Validators.minLength(0),Validators.maxLength(255)]],
     price: [NaN, [Validators.required, Validators.min(0), Validators.max(2e32)]],
     image_galery: this.fb.array(['']),
-    igredients: this.fb.array(['', [Validators.maxLength(255)]]),
+    ingredients: [this.items],
     category_id: [NaN, [Validators.required]],
     BaseIVA: [NaN, [Validators.min(1),Validators.max(100)]]
   })
@@ -51,30 +53,31 @@ export class CrearProductosComponent implements OnInit {
   }
 
   submit() {
-    this.mediaSvc.post_images(this.files!).subscribe(data => {
-      this.form.patchValue({
-        image: data.names,
-      });
-      this.categoriasSvc.postCategorias(this.form.value as Category).subscribe(
-        data => {
-          Swal.fire(
-            {
-              title: 'La categoría se creó correctamente',
-              icon: 'success',
-              confirmButtonText: 'Aceptar',
-              buttonsStyling: false,
-              customClass: {
-                confirmButton: 'button is-success is-rounded'
-              }
-            }
-          ).then((result) => {
-            if (result.isConfirmed){
-              this.router.navigate(['../'])
-            }
-          })
-        }
-      )
-    })
+    console.log(this.form.value)
+    // this.mediaSvc.post_images(this.files!).subscribe(data => {
+    //   this.form.patchValue({
+    //     image_galery: data.names,
+    //   });
+    //   this.categoriasSvc.postCategorias(this.form.value as Category).subscribe(
+    //     data => {
+    //       Swal.fire(
+    //         {
+    //           title: 'La categoría se creó correctamente',
+    //           icon: 'success',
+    //           confirmButtonText: 'Aceptar',
+    //           buttonsStyling: false,
+    //           customClass: {
+    //             confirmButton: 'button is-success is-rounded'
+    //           }
+    //         }
+    //       ).then((result) => {
+    //         if (result.isConfirmed){
+    //           this.router.navigate(['../'])
+    //         }
+    //       })
+    //     }
+    //   )
+    // })
   }
 
 }
