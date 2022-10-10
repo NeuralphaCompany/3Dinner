@@ -1,4 +1,5 @@
 
+import os
 from typing import Any
 
 from fastapi import APIRouter, Depends, status, HTTPException
@@ -10,6 +11,7 @@ from sqlalchemy.orm import Session
 from app.api.dependencies import db, jwt_bearer
 from app import schemas
 from app.services import crud
+from app.assets import imagesdir
 
 
 router = APIRouter()
@@ -103,6 +105,10 @@ def update_product(
     """
 
     db_obj = crud.producto.get(db=db, id=product_id)
+
+    if (set(db_obj.image_galery) - set(producto.image_galery)):
+        imagesToDelete = set(db_obj.image_galery) - set(producto.image_galery)
+        [os.remove(imagesdir + imageToDelete) for imageToDelete in imagesToDelete]
 
     if not db_obj:
         return HTTPException(404, "Product not found")

@@ -109,7 +109,12 @@ def update_category(
         return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={
             'detail': 'Not found'
         })
-    db_category = crud.categoria.update(db=db, id=category_id, obj_in=category)
+    if db_obj.image != category.image:
+        try:
+            os.remove(imagesdir+db_obj.image)
+        except:
+            print('No image')
+    db_category = crud.categoria.update(db=db, db_obj=db_obj, obj_in=category)
     return db_category
 
 

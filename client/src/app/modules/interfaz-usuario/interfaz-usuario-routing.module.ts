@@ -9,7 +9,11 @@ const routes: Routes = [
     component: CategoriasComponent
   },
   {
-    path: 'categoria/:id/productos',
+    path: 'productos/:id',
+    component: ProductosComponent
+  },
+  {
+    path: 'productos',
     component: ProductosComponent
   }
 ];

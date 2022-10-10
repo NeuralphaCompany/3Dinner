@@ -4,27 +4,28 @@
             <p class="control">
                 <input type="text" class="input is-rounded" formControlName="name" placeholder="Nombre">
             </p>
-            <div class="file is-centered is-primary mt-5 has-name is-boxed">
-                <label class="file-label">
-                    <input class="file-input" (change)="onFileChange($event)" type="file"
-                        name="resume">
-                    <span class="file-cta">
-                        <span class="file-icon">
-                            <i class="fas fa-upload"></i>
-                        </span>
-                        <span class="file-label">
-                            Imágen de la categoría
-                        </span>
-                    </span>
-                    <span class="file-name">
-                        {{file?.name}}
-                    </span>
-                </label>
+            <div class="file is-centered">
+                <div class="image">
+                    <div class="file edit is-link">
+                        <label class="file-label">
+                            <input class="file-input" (change)="onFileChange($event)" type="file" accept="image/*"
+                                name="resume">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fas fa-edit"></i>
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                    <img *ngIf="!file" [src]="prefix + 'media/images/' + form.value.image" alt="Category image" style="height: 200px; width:auto;">
+                    <img *ngIf="file" src={{imageEdited}} alt="imagen para editar" style="height: 200px; width:auto;">
+                </div>
             </div>
+            
             <div class="buttons is-flex is-justify-content-flex-end mt-5 w-100">
-                <button class="button is-danger is-rounded is-medium" routerLink="../../"> Cancelar </button>
+                <button class="button is-danger is-rounded is-medium" routerLink="../../../"> Cancelar </button>
                 <button class="button is-success is-rounded is-medium" type="submit" [disabled]="form.invalid">
-                    Crear
+                    Enviar
                 </button>
             </div>
         </form>

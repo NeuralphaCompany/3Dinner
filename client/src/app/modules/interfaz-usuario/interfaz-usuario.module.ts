@@ -6,13 +6,15 @@ import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { SharedModule } from '@shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductosComponent } from './pages/productos/productos.component';
+import { ProductoComponent } from './components/producto/producto.component';
 
 
 @NgModule({
   declarations: [
   
     CategoriasComponent,
-       ProductosComponent
+       ProductosComponent,
+       ProductoComponent
   ],
   imports: [
     CommonModule,

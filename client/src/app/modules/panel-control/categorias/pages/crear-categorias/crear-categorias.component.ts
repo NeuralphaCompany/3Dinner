@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from '@interfaces/categoria';
 import { CategoriasService } from '@services/categorias.service';
@@ -16,7 +16,7 @@ export class CrearCategoriasComponent implements OnInit {
   file: any | undefined
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private mediaSvc: MediaService,
     private categoriasSvc: CategoriasService,
     private router: Router

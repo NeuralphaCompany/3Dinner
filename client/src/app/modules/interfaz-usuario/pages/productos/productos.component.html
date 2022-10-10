@@ -1,1 +1,34 @@
-<p>productos works!</p>
+<div class="container is-clickable is-multiline is-centered is-mobile columns mt-2 m-2">
+
+    <div class="column is-one-third-desktop is-full-mobile is-half-tablet" *ngFor="let product of products?.results">
+        <div class="card" [routerLink]="['/producto', product.id]">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img [src]="prefix + 'media/images/' + product.image_galery[0]" alt="Category image">
+                </figure>
+            </div>
+            <header class="card-header">
+                <p class="card-header-title is-5">
+                    {{product.name}}
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    {{product.short_description}}
+                </div>
+            </div>
+            <footer class="card-footer">
+                <p class="card-footer-item">
+                    <span>
+                        {{product.price | currency}}
+                    </span>
+                </p>
+                <p class="card-footer-item">
+                    <button class="button is-success is-rounded">
+                        Añadir
+                    </button>
+                </p>
+            </footer>
+        </div>
+    </div>
+</div>

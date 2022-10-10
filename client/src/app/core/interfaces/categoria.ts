@@ -1,8 +1,8 @@
-export interface CategoryResponse {
+export interface CategoriesResponse {
     count:    number;
     next:     string;
     previous: null;
-    results:  CategoryInside[];
+    results:  CategoryInDB[];
 }
 
 
@@ -12,6 +12,7 @@ export interface Category {
     name:  string;
 }
 
-export interface CategoryInside extends Category {
-    id : number
+
+export interface CategoryInDB extends Category {
+    id : number;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoryResponse } from '@interfaces/categoria';
+import { CategoriesResponse } from '@interfaces/categoria';
 import { CategoriasService } from '@services/categorias.service';
 import { prefix } from '@shared/data/ruta.api';
 import Swal from 'sweetalert2';
@@ -51,7 +51,7 @@ export class VerCategoriasComponent implements OnInit {
     private router: Router
   ) {
     this.categoriesSvc.getCategorias().subscribe({
-      next: (data: CategoryResponse) => {
+      next: (data: CategoriesResponse) => {
         this.categories = data.results
       }
     });

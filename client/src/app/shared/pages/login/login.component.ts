@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from '@interfaces/auth';
 import { AuthService } from '@services/auth.service';
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   public isLoading = this.loaderSvc.isLoading;
 
   constructor(
-    private fb : FormBuilder,
+    private fb : UntypedFormBuilder,
     private authSvc : AuthService,
     private loaderSvc : LoaderService,
     private router: Router,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from '@services/categorias.service';
 import { prefix } from '@shared/data/ruta.api';
-import { CategoryResponse } from 'src/app/core/interfaces/categoria';
+import { CategoriesResponse } from 'src/app/core/interfaces/categoria';
 import Swal from 'sweetalert2';
 
 
@@ -18,19 +18,11 @@ export class CategoriasComponent implements OnInit {
   ];
 
   constructor(
-    private categoriesSvc : CategoriasService
-  ) { 
+    private categoriesSvc: CategoriasService
+  ) {
     this.categoriesSvc.getCategorias().subscribe({
-      next: (data : CategoryResponse) => {
+      next: (data: CategoriesResponse) => {
         this.categories = data.results
-      },
-      error: (err:any) => {
-        Swal.fire({
-          title: 'Algo malo pasó',
-          text: err.detail,
-          icon: 'error',
-          confirmButtonText: 'Aceptar'
-        })
       }
     });
   }

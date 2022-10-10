@@ -1,19 +1,17 @@
-<div class="container is-clickable is-multiline is-centered is-mobile columns mt-2">
-    
-    <div class="column is-one-third-desktop is-half-mobile is-half-tablet" *ngFor="let category of categories">
-        <div class="card" [routerLink]="['/productos', category.id]">
+<div class="container is-clickable is-multiline is-centered is-mobile columns mt-2 m-2">
+
+    <div class="column is-one-third-desktop is-full-mobile is-half-tablet" *ngFor="let category of categories">
+        <div class="card" [routerLink]="['productos', category.id]">
             <div class="card-image">
                 <figure class="image is-4by3">
                     <img [src]="prefix + 'media/images/' + category.image" alt="Category image">
                 </figure>
             </div>
-            <div class="card-content">
-                <div class="content">
-                    <p class="title is-5">
-                        {{category.name}}
-                    </p>
-                </div>
-            </div>
+            <header class="card-header">
+                <p class="card-header-title is-5">
+                    {{category.name}}
+                </p>
+            </header>
         </div>
     </div>
 </div>

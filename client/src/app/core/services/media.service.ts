@@ -25,7 +25,6 @@ export class MediaService {
     for(const file of files) {
       body.append('files', file, file.name);
     }
-
     return this.http.post<any>(this.endpoint, body)
   }
 

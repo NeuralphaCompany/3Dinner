@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ProductosResponse } from '@interfaces/producto';
 import { prefix } from '@shared/data/ruta.api';
-import { Category, CategoryResponse } from '../interfaces/categoria';
+import { Category, CategoryInDB, CategoriesResponse } from '../interfaces/categoria';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,30 @@ export class CategoriasService {
   ) { }
 
   getCategorias(){
-    return this.http.get<CategoryResponse>(this.prefix)
+    return this.http.get<CategoriesResponse>(this.prefix)
   }
 
-  postCategorias(category:Category){
-    return this.http.post<CategoryResponse>(this.prefix, category)
+
+  getCategoria(id: number){
+    return this.http.get<CategoryInDB>(this.prefix+id)
   }
+
+
+  postCategorias(category: Category){
+    return this.http.post<CategoryInDB>(this.prefix, category)
+  }
+
+
+  updateCategoria(category: Category, id: number){
+    return this.http.put(this.prefix+id, category)
+  }
+
 
   deleteCategoria(id:number | string) {
     return this.http.delete(this.prefix + id)
+  }
+
+  getProducts(id: number){
+    return this.http.get<ProductosResponse>(this.prefix + id + '/products')
   }
 }
