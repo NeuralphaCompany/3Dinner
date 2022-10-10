@@ -1,7 +1,7 @@
 <div class="container is-clickable is-multiline is-centered is-mobile columns mt-2 m-2">
 
     <div class="column is-one-third-desktop is-full-mobile is-half-tablet" *ngFor="let product of products?.results">
-        <div class="card" [routerLink]="['/producto', product.id]">
+        <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
                     <img [src]="prefix + 'media/images/' + product.image_galery[0]" alt="Category image">
@@ -24,7 +24,7 @@
                     </span>
                 </p>
                 <p class="card-footer-item">
-                    <button class="button is-success is-rounded">
+                    <button class="button is-success is-rounded" (click)="openProduct(product.id)">
                         Añadir
                     </button>
                 </p>

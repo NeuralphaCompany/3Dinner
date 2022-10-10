@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoInDB, ProductosResponse } from '@interfaces/producto';
+import { ProductoComponent } from '@modules/interfaz-usuario/components/producto/producto.component';
 import { CategoriasService } from '@services/categorias.service';
 import { ProductosService } from '@services/productos.service';
 import { prefix } from '@shared/data/ruta.api';
@@ -22,7 +23,7 @@ export class ProductosComponent implements OnInit {
   constructor(
     private activeRoute: ActivatedRoute,
     private categorySvc: CategoriasService,
-    private productSvc: ProductosService
+    private productSvc: ProductosService,
   ) { 
     const productos$ = this.activeRoute.params.pipe(
       switchMap((params:any) => {
@@ -45,6 +46,14 @@ export class ProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  openProduct( id: number ): void {
+    // const modalRef = this.modalSvc.open(ProductoComponent)
+    // modalRef.componentInstance.id = id
+    // modalRef.result.then(
+    //   (data) => console.log(data) 
+    // )
   }
 
 }

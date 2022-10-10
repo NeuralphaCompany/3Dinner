@@ -1,1 +1,32 @@
-<p>producto works!</p>
+<div class="card" [routerLink]="['/producto', product?.id]">
+    <div class="card-image">
+        
+        <figure class="image is-4by3">
+            <swiper [pagination]="true" class="mySwiper" *ngFor="let image of product?.image_galery">
+                <img [src]="prefix + 'media/images/' + image" alt="Category image">
+            </swiper>
+        </figure>
+    </div>
+    <header class="card-header">
+        <p class="card-header-title is-5">
+            {{product?.name}}
+        </p>
+    </header>
+    <div class="card-content">
+        <div class="content">
+            {{product?.short_description}}
+        </div>
+    </div>
+    <footer class="card-footer">
+        <p class="card-footer-item">
+            <span>
+                {{product?.price | currency}}
+            </span>
+        </p>
+        <p class="card-footer-item">
+            <button class="button is-success is-rounded">
+                Añadir
+            </button>
+        </p>
+    </footer>
+</div>
