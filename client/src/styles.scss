@@ -18,6 +18,11 @@ app-root {
     height: 100%;
   }
 
+.swiper-pagination-bullet-active {
+    background-color: rgb(147, 177, 225) !important;
+    border: 1px #000;
+}
+
 
 @import "../node_modules/bulma/bulma.sass";
 @import '../node_modules/@sweetalert2/theme-bulma/bulma.scss';

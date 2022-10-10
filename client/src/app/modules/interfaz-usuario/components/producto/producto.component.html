@@ -1,11 +1,13 @@
-<div class="card" [routerLink]="['/producto', product?.id]">
+<div class="card">
     <div class="card-image">
-        
-        <figure class="image is-4by3">
-            <swiper [pagination]="true" class="mySwiper" *ngFor="let image of product?.image_galery">
+
+
+        <swiper [pagination]="{dynamicBullets: true}" class="mySwiper">
+            <ng-template *ngFor="let image of product?.image_galery" swiperSlide>
                 <img [src]="prefix + 'media/images/' + image" alt="Category image">
-            </swiper>
-        </figure>
+            </ng-template>
+        </swiper>
+
     </div>
     <header class="card-header">
         <p class="card-header-title is-5">
@@ -14,7 +16,7 @@
     </header>
     <div class="card-content">
         <div class="content">
-            {{product?.short_description}}
+            {{product?.description}}
         </div>
     </div>
     <footer class="card-footer">
@@ -24,6 +26,7 @@
             </span>
         </p>
         <p class="card-footer-item">
+            <button class="button is-light is-rounded is-danger">Cancelar</button>
             <button class="button is-success is-rounded">
                 Añadir
             </button>

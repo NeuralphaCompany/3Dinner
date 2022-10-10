@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoInDB, ProductosResponse } from '@interfaces/producto';
 import { ProductoComponent } from '@modules/interfaz-usuario/components/producto/producto.component';
+import { DialogService } from '@ngneat/dialog';
 import { CategoriasService } from '@services/categorias.service';
 import { ProductosService } from '@services/productos.service';
 import { prefix } from '@shared/data/ruta.api';
@@ -16,7 +17,7 @@ export class ProductosComponent implements OnInit {
 
   public prefix = prefix
 
-  private id = 0 
+  private id = 0
 
   public products: ProductosResponse | undefined;
 
@@ -24,16 +25,17 @@ export class ProductosComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private categorySvc: CategoriasService,
     private productSvc: ProductosService,
-  ) { 
+    private modalSvc: DialogService
+  ) {
     const productos$ = this.activeRoute.params.pipe(
-      switchMap((params:any) => {
+      switchMap((params: any) => {
         const id = params['id'] as number
         if (id) {
           return this.categorySvc.getProducts(id)
         } else {
           return this.productSvc.getAllProducts()
         }
-        
+
       })
     )
 
@@ -48,12 +50,12 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openProduct( id: number ): void {
-    // const modalRef = this.modalSvc.open(ProductoComponent)
-    // modalRef.componentInstance.id = id
-    // modalRef.result.then(
-    //   (data) => console.log(data) 
-    // )
+  openProduct(id: number): void {
+    const modalRef = this.modalSvc.open(ProductoComponent, {
+      data: {
+        id: id
+      }
+    })
   }
 
 }

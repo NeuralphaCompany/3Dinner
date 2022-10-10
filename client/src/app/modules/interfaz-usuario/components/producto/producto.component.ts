@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductoInDB } from '@interfaces/producto';
+import { DialogRef } from '@ngneat/dialog';
 import { ProductosService } from '@services/productos.service';
 import { prefix } from '@shared/data/ruta.api';
-import Swiper, { Pagination } from 'swiper'
+import SwiperCore, { Pagination } from 'swiper'
+
+SwiperCore.use([Pagination])
 
 @Component({
   selector: 'app-producto',
@@ -18,17 +21,19 @@ export class ProductoComponent implements OnInit {
   @Input() id: number = 0
 
   constructor(
-    private productoSvc: ProductosService
+    private productoSvc: ProductosService,
+    private ref: DialogRef
   ) {
-    
-  }
-
-  ngOnInit(): void {
-    this.productoSvc.getProduct(this.id).subscribe(
+    this.productoSvc.getProduct(this.ref.data.id).subscribe(
       (data: ProductoInDB) => {
         this.product = data
       }
     )
+    
+  }
+
+  ngOnInit(): void {
+    
   }
 
 }

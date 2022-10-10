@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { RouterModule } from '@angular/router';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { DialogModule } from '@ngneat/dialog';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    DialogModule.forRoot()
   ],
   providers: [
     CookieService,

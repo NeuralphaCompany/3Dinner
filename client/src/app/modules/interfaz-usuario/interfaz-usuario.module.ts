@@ -11,10 +11,10 @@ import { ProductoComponent } from './components/producto/producto.component';
 
 @NgModule({
   declarations: [
-  
+
     CategoriasComponent,
-       ProductosComponent,
-       ProductoComponent
+    ProductosComponent,
+    ProductoComponent
   ],
   imports: [
     CommonModule,
