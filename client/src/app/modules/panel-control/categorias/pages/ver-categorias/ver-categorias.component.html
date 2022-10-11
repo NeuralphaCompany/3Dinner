@@ -1,25 +1,29 @@
-
-    <swiper [config]="config" class="mySwiper mt-5 is-centered">
-        <ng-template *ngFor="let category of categories" swiperSlide>
-            <div class="card block" (click)="$event.stopPropagation()">
-                <div class="card-image" [routerLink]="['/productos', category.id]">
-                    <figure class="image is-4by3">
-                        <img [src]="prefix + 'media/images/' + category.image" alt="Category image">
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        <p class="title is-5">
-                            {{category.name}}
-                        </p>
-                    </div>
-                </div>
-                <footer class="card-footer m-2 is-flex is-justify-content-flex-end">
+<swiper [config]="config" class="mySwiper mt-5 is-centered">
+    <ng-template *ngFor="let category of categories" swiperSlide>
+        <div class="card block" (click)="$event.stopPropagation()">
+            <div class="card-image" [routerLink]="['/home/productos', category.id]">
+                <figure class="image is-4by3">
+                    <img [src]="prefix + 'media/images/' + category.image" alt="Category image">
+                </figure>
+            </div>
+            <header class="card-header">
+                <p class="card-header-title is-5">
+                    {{category.name}}
+                </p>
+            </header>
+            <footer class="card-footer m-2 is-flex is-justify-content-flex-end">
+                <span class="card-footer-item">
                     <button class="button is-danger is-small is-rounded is-outlined" (click)="eliminar(category.id)">
                         <strong>Eliminar</strong>
                     </button>
-                    <button class="button ml-2 is-info is-small is-rounded is-outlined" [routerLink]="['/panel-control/categorias/editar-categoria', category.id]"> <strong>Editar</strong></button>
-                </footer>
-            </div>
-        </ng-template>
-    </swiper>
+                </span>
+                <span class="card-footer-item">
+                    <button class="button ml-2 is-info is-small is-rounded is-outlined"
+                        [routerLink]="['/panel-control/categorias/editar-categoria', category.id]">
+                        <strong>Editar</strong></button>
+                </span>
+
+            </footer>
+        </div>
+    </ng-template>
+</swiper>

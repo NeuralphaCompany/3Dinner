@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoInDB, ProductosResponse } from '@interfaces/producto';
 import { ProductoComponent } from '@modules/interfaz-usuario/components/producto/producto.component';
 import { DialogService } from '@ngneat/dialog';
+import { AuthService } from '@services/auth.service';
 import { CategoriasService } from '@services/categorias.service';
 import { ProductosService } from '@services/productos.service';
 import { prefix } from '@shared/data/ruta.api';
 import { switchMap } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos',
@@ -15,9 +17,11 @@ import { switchMap } from 'rxjs';
 })
 export class ProductosComponent implements OnInit {
 
-  public prefix = prefix
+  public prefix = prefix;
 
-  private id = 0
+  private id = 0;
+
+  public isLoged: boolean = false;
 
   public products: ProductosResponse | undefined;
 
@@ -25,7 +29,9 @@ export class ProductosComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private categorySvc: CategoriasService,
     private productSvc: ProductosService,
-    private modalSvc: DialogService
+    private modalSvc: DialogService,
+    private authSvc: AuthService,
+    private cd: ChangeDetectorRef
   ) {
     const productos$ = this.activeRoute.params.pipe(
       switchMap((params: any) => {
@@ -35,7 +41,6 @@ export class ProductosComponent implements OnInit {
         } else {
           return this.productSvc.getAllProducts()
         }
-
       })
     )
 
@@ -44,6 +49,8 @@ export class ProductosComponent implements OnInit {
         this.products = data
       }
     )
+
+    this.isLoged = this.authSvc.isLoggedIn()
 
   }
 
@@ -54,6 +61,35 @@ export class ProductosComponent implements OnInit {
     const modalRef = this.modalSvc.open(ProductoComponent, {
       data: {
         id: id
+      }
+    })
+  }
+
+  eliminar(id:number){
+    Swal.fire({
+      text: "¿Está seguro de querer eliminar el producto?",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Eliminar",
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: "button is-danger is-rounded",
+        cancelButton: "button ml-2 is-dark is-rounded is-outlined"
+      }
+    }).then((res) => {
+      if (res.isConfirmed) {
+        this.productSvc.deleteProduct(id).subscribe({
+          next: (data: any) => {
+            Swal.fire({
+              text: 'La categoría ha sido eliminada',
+              icon: 'success',
+              confirmButtonText: 'Continuar'
+            }).then(()=>{
+              this.cd.detectChanges()
+            })
+          }
+        })
       }
     })
   }

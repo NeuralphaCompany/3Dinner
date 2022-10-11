@@ -13,12 +13,11 @@ import Swiper from 'swiper';
 })
 export class VerCategoriasComponent implements OnInit {
 
-  public prefix = prefix
+  public prefix = prefix;
 
-  slidesPerView: number = 3
+  slidesPerView: number = 3;
 
-  categories: any[] = [
-  ];
+  categories: any[] = [];
 
   public config: any = {
     slidesPerView: 1,

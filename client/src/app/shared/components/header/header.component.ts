@@ -12,18 +12,18 @@ export class HeaderComponent implements OnInit {
 
   public prefix = prefix;
 
-  isLoged = false;
+  public isLoged = false;
 
   private subscriptionName!: Subscription;
 
   constructor(
     private authSvc: AuthService,
   ) { 
-    this.authSvc.Logged.subscribe(() => this.ngOnInit());
+    this.isLoged = this.authSvc.isLoggedIn();
   }
 
   ngOnInit(): void {
-    this.isLoged = this.authSvc.isLoggedIn();
+    
   }
 
   logOut(){

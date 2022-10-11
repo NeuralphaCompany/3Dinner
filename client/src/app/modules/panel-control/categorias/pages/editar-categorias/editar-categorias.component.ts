@@ -19,7 +19,7 @@ export class EditarCategoriasComponent implements OnInit {
 
   public prefix: string = prefix;
 
-  public imageEdited: any = ''
+  public imageEdited: any;
 
   id = 0;
 
@@ -115,7 +115,7 @@ export class EditarCategoriasComponent implements OnInit {
       showCancelButton: true,
       customClass: {
         confirmButton: 'button is-danger is-rounded',
-        cancelButton: 'button is-success is-rounded'
+        cancelButton: 'button ml-2 is-dark is-rounded is-outlined'
       }
     }).then(
       ((result) => {

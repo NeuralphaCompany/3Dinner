@@ -39,11 +39,11 @@ export class CrearProductosComponent implements OnInit {
     name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(255)]],
     description: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(255)]],
     short_description: ['', [Validators.minLength(0),Validators.maxLength(255)]],
-    price: [NaN, [Validators.required, Validators.min(0), Validators.max(2e32)]],
+    price: [NaN, [Validators.required, Validators.min(1)]],
     image_galery: [this.images],
     ingredients: [this.items],
     category_id: [NaN, [Validators.required]],
-    BaseIVA: [NaN, [Validators.min(1),Validators.max(100)]]
+    BaseIVA: [NaN, [Validators.min(0),Validators.max(100)]]
   })
   
 

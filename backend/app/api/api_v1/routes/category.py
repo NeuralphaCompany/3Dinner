@@ -137,6 +137,11 @@ def delete_category(
 
     db_obj = crud.categoria.get(db=db, id=category_id)
 
+    if len(db_obj.products)!=0:
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={
+            'detail': 'Primero elimine los productos'
+        })
+
     if db_obj is None:
         return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={
             'detail': 'Not found'

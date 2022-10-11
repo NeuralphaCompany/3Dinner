@@ -1,0 +1,14 @@
+.mySwiper{
+    max-width: 760px;
+    overflow: hidden;
+}
+
+@media screen and (max-device-width: 760px) {
+   .mySwiper{ max-width: 100vh;}
+}
+
+@media screen and (max-device-width: 1024px) {
+    .mySwiper{
+        max-width: 600px;
+    }
+}

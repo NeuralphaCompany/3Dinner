@@ -1,4 +1,4 @@
-<div class="container is-clickable is-multiline is-centered is-mobile columns mt-2 m-2">
+<div class="container is-clickable is-multiline is-centered is-mobile columns mt-2">
 
     <div class="column is-one-third-desktop is-full-mobile is-half-tablet" *ngFor="let product of products?.results">
         <div class="card">
@@ -28,6 +28,19 @@
                         Añadir
                     </button>
                 </p>
+            </footer>
+            <footer *ngIf="isLoged"class="card-footer m-2 is-flex is-justify-content-flex-end">
+                <span class="card-footer-item">
+                    <button class="button is-danger is-rounded is-outlined" (click)="eliminar(product.id)">
+                        <strong>Eliminar</strong>
+                    </button>
+                </span>
+                <span class="card-footer-item">
+                    <button class="button ml-2 is-info is-rounded is-outlined"
+                        [routerLink]="['/panel-control/productos/editar-producto', product.id]">
+                        <strong>Editar</strong>
+                    </button>
+                </span>
             </footer>
         </div>
     </div>
