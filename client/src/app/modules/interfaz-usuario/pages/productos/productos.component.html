@@ -29,7 +29,7 @@
                     </button>
                 </p>
             </footer>
-            <footer *ngIf="isLoged"class="card-footer m-2 is-flex is-justify-content-flex-end">
+            <footer *ngIf="(isLoged)"class="card-footer m-2 is-flex is-justify-content-flex-end">
                 <span class="card-footer-item">
                     <button class="button is-danger is-rounded is-outlined" (click)="eliminar(product.id)">
                         <strong>Eliminar</strong>

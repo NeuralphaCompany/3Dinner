@@ -24,7 +24,7 @@
       </a>
 
 
-      <a *ngIf="isLoged" class="navbar-item" (click)="toggleMenu($event)" [routerLink]="['/panel-control']">
+      <a *ngIf="(isLoged | async)" class="navbar-item" (click)="toggleMenu($event)" [routerLink]="['/panel-control']">
         Panel de control
       </a>
     </div>
@@ -32,10 +32,10 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a *ngIf="!isLoged" class="button is-info is-rounded" (click)="toggleMenu($event)" [routerLink]="['/login']">
+          <a *ngIf="!(isLoged | async)" class="button is-info is-rounded" (click)="toggleMenu($event)" [routerLink]="['/login']">
             ingresar
           </a>
-          <button *ngIf="isLoged" class="button is-info is-rounded" (click)="toggleMenu($event)"
+          <button *ngIf="(isLoged | async)" class="button is-info is-rounded" (click)="toggleMenu($event)"
             [routerLink]="['/home']" (click)="logOut()">
             Salir
           </button>

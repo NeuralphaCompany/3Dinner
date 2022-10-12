@@ -21,7 +21,7 @@ export class ProductosComponent implements OnInit {
 
   private id = 0;
 
-  public isLoged: boolean = false;
+  public isLoged = this.authSvc.isLoggedIn();
 
   public products: ProductosResponse | undefined;
 
@@ -49,8 +49,6 @@ export class ProductosComponent implements OnInit {
         this.products = data
       }
     )
-
-    this.isLoged = this.authSvc.isLoggedIn()
 
   }
 

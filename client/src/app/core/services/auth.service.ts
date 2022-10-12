@@ -5,7 +5,7 @@ import { environment } from '@environments/environment';
 import { Auth, Token } from '@interfaces/auth';
 import { prefix } from '@shared/data/ruta.api';
 import { CookieService } from 'ngx-cookie-service';
-import { map, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -16,12 +16,17 @@ export class AuthService {
   private prefix = prefix + 'login/access-token';
   private cookieToken = environment.cookieToken
 
+  public isLoggedIn$ : Subject<boolean> = new Subject();
+
   constructor(
     private http: HttpClient,
     private cookieSvc: CookieService,
-  ) { }
+    private router: Router
+  ) { 
+    this.isLoggedIn()
+  }
 
-  public Logged = new Subject<Boolean>();
+  public Logged = new Subject<boolean>();
 
   login(auth: Auth) {
     const headers = new HttpHeaders(
@@ -40,8 +45,10 @@ export class AuthService {
     ))
   }
 
-  isLoggedIn(): boolean {
-    return this.cookieSvc.check(`_${this.cookieToken}`)
+  isLoggedIn() {
+    const tokenCheck = this.cookieSvc.check(`_${this.cookieToken}`)
+    this.Logged.next(tokenCheck)
+    return tokenCheck
   }
 
   getToken(): string {
@@ -49,6 +56,9 @@ export class AuthService {
   }
 
   logOut() {
-    this.cookieSvc.deleteAll('/', '/')
+    this.cookieSvc.deleteAll()
+    this.cookieSvc.delete(`${this.cookieToken}`)
+    this.isLoggedIn()
+    this.router.navigate(['/login'])
   }
 }
