@@ -1,0 +1,8 @@
+article:hover {
+    transform: scale(1.05);
+    transition: ease-in-out 0.1s;
+}
+
+.container{
+    min-height: 0 !important;
+}
