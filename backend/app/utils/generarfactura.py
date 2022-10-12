@@ -18,17 +18,17 @@ def generate(db:Session, *, venta: VentaInDB) -> bytes or None:
     subtotal = 0
     impuestos = 0
 
-    for producto in productos:
+    for producto, _ in zip(productos, venta.productos):
         tabla += f'''
             <tr>
-                <td class="cantidad">{1}</td>
+                <td class="cantidad">{_['quantity']}</td>
                 <td colspan="3">{producto.name}</td>
                 <td colspan="2">{producto.price}</td>
             </tr>
         '''
-        subtotal += int(producto.price*((100-producto.BaseIVA)*0.01))
-        impuestos += int(producto.price*(producto.BaseIVA)*0.01)
-        total += producto.price
+        subtotal += int(producto.price*_['quantity']*((100-producto.BaseIVA)*0.01))
+        impuestos += int(producto.price*_['quantity']*(producto.BaseIVA)*0.01)
+        total += producto.price*_['quantity']
     html = HTML(string=f'''
     <!DOCTYPE html>
     <html>

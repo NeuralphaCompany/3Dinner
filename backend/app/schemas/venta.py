@@ -19,7 +19,7 @@ class VentaBase(BaseModel):
     created_at: Optional[datetime]
     estado: Optional[str] = 'Pedido'
     mesa: Optional[int] = 0
-    user_id: Optional[int]
+    user_id: Optional[int] = 1
 
 
 class VentaCreate(VentaBase):
