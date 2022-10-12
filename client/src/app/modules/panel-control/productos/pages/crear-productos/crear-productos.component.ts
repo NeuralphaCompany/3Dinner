@@ -16,10 +16,10 @@ import Swal from 'sweetalert2';
 })
 export class CrearProductosComponent implements OnInit {
 
-  files: any[] | undefined
+  files: any[] | undefined;
   categorias: CategoriesResponse | undefined;
-  items : string[] = []
-  images: string[] = []
+  items : string[] = [];
+  images: string[] = [];
 
   constructor(
     private fb: FormBuilder,

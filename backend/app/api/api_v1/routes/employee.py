@@ -21,7 +21,7 @@ def create_employee(
     *,
     db: Session = Depends(db.get_db),
     super_employee: schemas.Employee = Depends(
-        jwt_bearer.get_current_active_superemployee),
+                                    jwt_bearer.get_current_active_superemployee),
     employee: schemas.EmployeeCreate
 ) -> schemas.Employee:
     """
@@ -65,9 +65,14 @@ def read_employee(
 
         params: id: int
     """
+    if id == 0:
+        return current_employee
+
     db_employee = crud.employee.get(db=db, id=id)
+
     if not (current_employee == db_employee or current_employee.is_superuser):
         return HTTPException(403, detail="You do not have permission to read this employee.")
+    
     return db_employee
 
 

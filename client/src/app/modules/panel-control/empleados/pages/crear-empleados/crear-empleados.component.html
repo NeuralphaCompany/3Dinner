@@ -1,0 +1,77 @@
+<div class="container mt-5">
+    <div class="box m-2">
+        <h1 class="title is-2 is-faded has-text-grey">
+            Registrar empleado
+        </h1>
+        <form class="block p-5 is-flex is-flex-direction-column" [formGroup]="form" (submit)="submit()">
+            <div class="columns is-multiline is-mobile">
+                <div class="column is-full-mobile is-half-tablet is-half-desktop">
+                    <p class="control">
+                        <input type="text" class="input is-rounded" formControlName="name" placeholder="Nombre">
+                    </p>
+                </div>
+                <div class="column is-full-mobile is-half-tablet is-half-desktop">
+                    <div class="control">
+                        <div class="select is-rounded" style="width:100%;">
+                            <select formControlName="is_superuser" placeholder="Super usuario" style="width: 100%;">
+                                <option selected>Super usuario</option>
+                                <option [value]="true">Sí</option>
+                                <option [value]="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-full">
+                    <p class="control">
+                        <input type="text" formControlName="email" class="input is-rounded" placeholder="Correo">
+                    </p>
+                </div>
+
+                <div class="column is-full">
+                    <p class="control">
+                        <input type="text" formControlName="cellphone" class="input is-rounded"
+                            placeholder="Celular">
+                    </p>
+                </div>
+                <div class="column is-full">
+                    <p class="control">
+                        <input type="password" formControlName="password" class="input is-rounded" placeholder="contraseña">
+                    </p>
+                </div>
+
+                <div class="column is-full">
+                    <p class="control">
+                        <input type="password" formControlName="confirmpassword" class="input is-rounded"
+                            placeholder="Confirmar contraseña">
+                    </p>
+                </div>
+
+
+            </div>
+            <div class="file is-centered is-primary mt-5 has-name is-boxed">
+                <label class="file-label">
+                    <input class="file-input" (change)="onFileChange($event)" type="file" name="resume" accept="image/*"
+                        multiple="multiple">
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                            Foto empleado
+                        </span>
+                    </span>
+                    <span *ngFor="let file of files" class="file-name">
+                        {{file?.name}}
+                    </span>
+                </label>
+            </div>
+            <div class="buttons is-flex is-justify-content-flex-end mt-5 w-100">
+                <button class="button is-danger is-rounded is-medium" routerLink="../../"> Cancelar </button>
+                <button class="button is-success is-rounded is-medium" type="submit" [disabled]="form.invalid">
+                    Crear
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

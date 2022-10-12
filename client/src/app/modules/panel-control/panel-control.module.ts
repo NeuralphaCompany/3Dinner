@@ -11,6 +11,8 @@ import { VerCategoriasComponent } from './categorias/pages/ver-categorias/ver-ca
 import { ProductosComponent } from './productos/productos.component';
 import { VerProductosComponent } from './productos/pages/ver-productos/ver-productos.component';
 import { EditarProductosComponent } from './productos/pages/editar-productos/editar-productos.component';
+import { VerEmpleadosComponent } from './empleados/pages/ver-empleados/ver-empleados.component';
+import { EmpleadosComponent } from './empleados/empleados.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { EditarProductosComponent } from './productos/pages/editar-productos/edi
     EditarCategoriasComponent,
     ProductosComponent,
     VerProductosComponent,
-    EditarProductosComponent
+    EditarProductosComponent,
+    VerEmpleadosComponent,
+    EmpleadosComponent
   ],
   imports: [
     CommonModule,
