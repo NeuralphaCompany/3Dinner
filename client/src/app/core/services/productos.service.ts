@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Producto, ProductosResponse, ProductoInDB } from '@interfaces/producto';
 import { prefix } from '@shared/data/ruta.api';
@@ -37,6 +37,16 @@ export class ProductosService {
 
   deleteProduct(id: number){
     return this.http.delete(this.urlEndPoint+id)
+  }
+
+
+  getProductsIds(ids: number[]) {
+    let params = new HttpParams();
+    for (let id of ids) {
+      params = params.append('ids',id)
+    }
+    console.log(params)
+    return this.http.get<ProductoInDB[]>(this.urlEndPoint+'list/', {params:params})
   }
 
 }

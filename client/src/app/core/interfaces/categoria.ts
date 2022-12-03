@@ -1,18 +1,18 @@
 export interface CategoriesResponse {
-    count:    number;
-    next:     string;
+    count: number;
+    next: string;
     previous: null;
-    results:  CategoryInDB[];
+    results: CategoryInDB[];
 }
 
 
 
 export interface Category {
     image: string;
-    name:  string;
+    name: string;
 }
 
 
 export interface CategoryInDB extends Category {
-    id : number;
+    id: number;
 }

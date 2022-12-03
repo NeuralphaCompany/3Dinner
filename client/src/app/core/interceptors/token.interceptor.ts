@@ -23,6 +23,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   private addToken(request : HttpRequest<unknown>) : HttpRequest<unknown> {
     const token = this.authSvc.getToken();
+    console.log(request)
     if (token) {
       return request.clone({
         setHeaders: {

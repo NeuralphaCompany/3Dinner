@@ -1,1 +1,42 @@
-<p>cart works!</p>
+<div class="card mt-6" >
+    <header class="card-header">
+        <p class="card-header-title">
+          Carrito 
+        </p>
+      </header>
+    <div class="card-content">
+        <div class="media" *ngFor="let product of products">
+            <div class="media-left">
+                <figure class="image is-48x48">
+                    <img [src]="prefix + 'media/images/' + product.image " alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="media-content">
+                <p class="title is-6">{{product.name}}</p>
+                <p class="subtitle is-6">{{product.price}} x {{product.quantity}}</p>
+            </div>
+            <div class="media-right">
+                <button class="button is-danger is-rounded is-outlined ">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        <form [formGroup]="form" >
+            <p class="control">
+                <textarea rows="2" class="textarea" formControlName="observacion" placeholder="Observaciones">
+
+                </textarea>
+            </p>
+        </form>
+    </div>
+    <footer class="card-footer">
+        <p class="card-footer-item">
+            {{total | currency}}
+        </p>
+        <button class="button is-rounded is-success is-outlined card-footer-item">
+            Realizar pedido
+        </button>
+      </footer>
+    
+</div>
+

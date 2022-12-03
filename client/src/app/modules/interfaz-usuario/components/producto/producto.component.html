@@ -22,12 +22,17 @@
     <footer class="card-footer">
         <p class="card-footer-item">
             <span>
-                {{product?.price | currency}}
+                {{product!.price * quantity| currency}}
+            </span>
+            <span class="is-flex is-flex-align-center ml-1">
+                <button class="button is-dark is-outlined is-small" (click)="minus()" [disabled]="quantity<=1">-</button>
+                <span>{{quantity}}</span>
+                <button class="button is-dark is-outlined is-small" (click)="sum()">+</button>
             </span>
         </p>
         <p class="card-footer-item">
-            <button class="button is-light is-rounded is-danger">Cancelar</button>
-            <button class="button is-success is-rounded">
+            <!-- <button class="button is-light is-rounded is-danger" (click)="cancel()">Cancelar</button> -->
+            <button class="button is-success is-rounded ml-1" (click)="submit()">
                 Añadir
             </button>
         </p>

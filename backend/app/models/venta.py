@@ -18,4 +18,5 @@ class Venta(Base):
     user_id = Column(Integer, ForeignKey("user.id"))
     estado = Column(String(255), nullable=False, default='Pedido')
     mesa = Column(Integer, nullable = False, default=0)
+    observacion: Column(String(255), nullable = True)
     user = relationship("User", back_populates="ventas")

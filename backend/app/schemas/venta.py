@@ -13,6 +13,7 @@ class AdicionesInside(BaseModel):
     id: int
     quantity: int
 
+
 class VentaBase(BaseModel):
     productos: List[ProductoInside]
     adiciones: Optional[List[AdicionesInside]]
@@ -20,6 +21,7 @@ class VentaBase(BaseModel):
     estado: Optional[str] = 'Pedido'
     mesa: Optional[int] = 0
     user_id: Optional[int] = 1
+    observacion: Optional[str]
 
 
 class VentaCreate(VentaBase):

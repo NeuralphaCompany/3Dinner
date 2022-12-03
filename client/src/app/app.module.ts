@@ -17,6 +17,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { RouterModule } from '@angular/router';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { DialogModule } from '@ngneat/dialog';
+import { ventaTotal } from '@shared/func/venta';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DialogModule } from '@ngneat/dialog';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    ventaTotal
   ],
   bootstrap: [AppComponent]
 })

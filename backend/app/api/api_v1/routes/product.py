@@ -1,8 +1,8 @@
 
 import os
-from typing import Any
+from typing import Any, List
 
-from fastapi import APIRouter, Depends, status, HTTPException
+from fastapi import APIRouter, Depends, status, HTTPException, Query
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 
@@ -86,6 +86,17 @@ def read_product(
     return db_product
 
 
+@router.get("/list/", status_code=200)
+def read_products_list(
+    *,
+    db: Session = Depends(db.get_db),
+    ids: List[int] = Query(None),
+) -> Any:
+
+    db_products = crud.producto.get_multi_ids(db=db, list_ids=ids)
+    return db_products
+
+
 @router.put("/{product_id}", status_code=200)
 def update_product(
     *,
@@ -108,7 +119,8 @@ def update_product(
 
     if (set(db_obj.image_galery) - set(producto.image_galery)):
         imagesToDelete = set(db_obj.image_galery) - set(producto.image_galery)
-        [os.remove(imagesdir + imageToDelete) for imageToDelete in imagesToDelete]
+        [os.remove(imagesdir + imageToDelete)
+         for imageToDelete in imagesToDelete]
 
     if not db_obj:
         return HTTPException(404, "Product not found")

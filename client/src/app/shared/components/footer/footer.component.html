@@ -1,1 +1,6 @@
-<p>footer works!</p>
+<footer *ngIf="total" class="notification is-dark p-2">
+    <div class="p-0 is-flex is-flex-direction-row is-align-content-flex-center is-justify-content-space-between">
+        <p>{{total | currency}}</p>
+        <button class="button is-rounded is-light" (click)="open()">Comprar</button>
+    </div>
+</footer>
