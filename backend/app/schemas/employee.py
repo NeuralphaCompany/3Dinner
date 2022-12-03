@@ -14,6 +14,7 @@ class EmployeeBase(BaseModel):
     created_at: Optional[datetime]
     rol: int
     is_superuser: bool = False
+    image: Optional[str]
 
 class EmployeeCreate(EmployeeBase):
     @root_validator()

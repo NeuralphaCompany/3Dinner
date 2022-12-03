@@ -15,6 +15,8 @@ import { VerEmpleadosComponent } from './empleados/pages/ver-empleados/ver-emple
 import { EmpleadosComponent } from './empleados/empleados.component';
 
 
+
+
 @NgModule({
   declarations: [
     PanelControlComponent,

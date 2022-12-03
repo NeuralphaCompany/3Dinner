@@ -26,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: 'ventas',
-    component: VentasComponent
+    loadChildren: () => import('./ventas/ventas.module')
+    .then(m => m.VentasModule)
   },
   {
     path: 'usuarios',

@@ -6,6 +6,7 @@ export interface Empleado {
     created_at: Date;
     rol: number;
     is_superuser: false;
+    image?: string;
 }
 
 export interface EmpleadoCreate extends Empleado{

@@ -16,7 +16,6 @@ export class SharedcomponentsService {
 
   constructor(
     private ventaTotal: ventaTotal,
-    private productoSvc: ProductosService,
     private cookieSvc: CookieService
   ) {
 
@@ -68,6 +67,11 @@ export class SharedcomponentsService {
       this.cookieSvc.set('cart', JSON.stringify(this.products))
       this.refreshtotal()
     }
+  }
 
+  deleteCart() {
+    this.products = []
+    this.cookieSvc.delete('cart')
+    this.products$.next(this.products)
   }
 }

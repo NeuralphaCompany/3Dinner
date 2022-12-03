@@ -1,22 +1,21 @@
-FROM python:3.9 as python
+FROM python:3.9
 ENV PYTHONUNBUFFERED=true
 
+ADD requirements.txt .
+RUN apt install g++
+RUN pip3 install -r requirements.txt
+COPY ./ ./app
+WORKDIR /app/
 
-FROM python as poetry
-ENV POETRY_HOME=/opt/poetry
-ENV POETRY_VIRTUALENVS_IN_PROJECT=true
-ENV POETRY_VIRTUALENVS_CREATE=false
-ENV PATH="$POETRY_HOME/bin:$PATH"
-RUN python -c 'from urllib.request import urlopen; print(urlopen("https://install.python-poetry.org").read().decode())' | python -
-COPY . ./
-RUN pip install -r requirements.txt
-RUN poetry install --no-dev
-#--no-interaction --no-ansi -vvv
-# FROM python as runtime
-# ENV PATH="/app/.venv/bin:$PATH"
-# ENV POETRY_HOME=/opt/poetry
-# ENV PATH="$POETRY_HOME/bin:$PATH"
-# COPY --from=poetry /app /app
-# EXPOSE 8000
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]
+
+RUN apt-get clean && apt-get update && apt-get install -y locales
+RUN sed -i -e 's/# es_ES.UTF-8 UTF-8/es_ES.UTF-8 UTF-8/' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales
+RUN locale-gen es_ES.UTF-8
+ENV LANG es_ES.UTF-8
+ENV LANGUAGE es_ES:es
+ENV LC_ALL es_ES.UTF-8
+
+
+CMD ["uvicorn", "app.main:app", "--host=0.0.0.0", "--port", "8000", "--reload"]
 

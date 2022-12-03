@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 fastapi = "^0.83.0"
-uvicorn = "^0.18.3"
+uvicorn = {extras = ["standard"], version = "^0.20.0"}
 python-multipart = "^0.0.5"
 email-validator = "^1.2.1"
 psycopg2-binary = "^2.9.3"

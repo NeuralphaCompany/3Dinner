@@ -24,6 +24,7 @@
     "@sweetalert2/theme-bulma": "^5.0.12",
     "bulma": "^0.9.4",
     "ngx-cookie-service": "^14.0.1",
+    "ngx-socket-io": "^4.4.0",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.4.33",
     "swiper": "^8.4.2",

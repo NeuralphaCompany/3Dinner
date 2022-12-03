@@ -1,0 +1,42 @@
+<div class="container is-clickable is-multiline is-centered is-mobile mt-2">
+
+    <div *ngFor="let venta of ventas">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title is-5">
+                    Venta # {{venta.id}}
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <div *ngFor="let product of venta.productos">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img [src]="prefix + 'media/images/' + product.image " alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-6">{{product.name}} x {{product.quantity}}</p>
+                         
+                        </div>
+                        <div class="media-right">
+                        </div>
+                    </div>
+                    <p>Observación: </p>
+                    <p>{{venta.observacion}}</p>
+                    <p>Mesa: </p>
+                    <p>{{venta.mesa}}</p>
+                </div>
+            </div>
+            <footer class="card-footer m-2 is-flex is-justify-content-flex-end">
+                <span class="card-footer-item">
+                    <button class="button ml-2 is-success is-rounded is-outlined" (click)="estado(venta.estado == 'PEDIDO'? 'EN PREPARACIÓN' : 'FINALIZADO', venta.id)">
+                        <strong>Cambiar estado a: {{venta.estado == 'PEDIDO'? 'EN PREPARACIÓN' : 'FINALIZADO'}}</strong>
+                    </button>
+                </span>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<button (click)="submit()">venta</button>

@@ -1,5 +1,24 @@
 <div class="containerPanel m-2">
     <app-categorias></app-categorias>
     <app-productos></app-productos>
-    <app-empleados></app-empleados>
+    <div class="container">
+        <div class="tile is-ancestor mt-5">
+            <div class="tile is-4 is-vertical is-parent">
+                <article class="tile is-dark notification is-child box is-clickable is-hovered" routerLink='ventas/activas'>
+    
+                        <p class="title">Ventas</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque
+                        tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                    
+                </article>
+    
+            </div>
+            <div class="tile is-parent box notification is-light is-clickable is-hovered" style="max-width: 100%;" routerLink='empleados/ver-empleados'>
+                <div class="tile is-child">
+                    <p class="title"> Lista de ventas</p>
+                    <!-- <app-ver-productos></app-ver-productos> -->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -12,5 +12,6 @@ class Employee(Base):
     created_at = Column(DateTime(timezone=True), default = func.now())
     rol = Column(Integer, nullable=False)
     is_superuser = Column(Boolean, default=False)
+    image = Column(String(255), nullable=True)
     hashed_password = Column(String(255), nullable=False)
     
