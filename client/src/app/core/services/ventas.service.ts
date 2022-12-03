@@ -17,7 +17,7 @@ export class VentasService {
   ) { 
   }
 
-  myWebSocket: WebSocketSubject<any> = webSocket('ws://localhost:8000/api/v1/venta/ws/' );
+  // myWebSocket: WebSocketSubject<any> = webSocket('ws://localhost:8000/api/v1/venta/ws/' );
 
 
   // socket = new WebSocket('ws://localhost:8000/api/v1/ventas/ws/')
@@ -26,7 +26,7 @@ export class VentasService {
     return this.http.post<VentaInDB>(this.urlEndpoint, venta).pipe(
       tap(
         (data) => {
-          this.myWebSocket.next(data)
+          // this.myWebSocket.next(data)
         }
       )
     )

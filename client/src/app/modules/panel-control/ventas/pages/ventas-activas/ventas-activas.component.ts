@@ -36,16 +36,16 @@ export class VentasActivasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ventasSvc.myWebSocket.asObservable().subscribe(
-      (data) => {
-        console.log(data)
-        this.ventas = this.ventas.concat(data)
-      }
-    )
+    // this.ventasSvc.myWebSocket.asObservable().subscribe(
+    //   (data) => {
+    //     console.log(data)
+    //     this.ventas = this.ventas.concat(data)
+    //   }
+    // )
   }
 
   submit() {
-    this.ventasSvc.myWebSocket.next(this.ventas[0])
+    // this.ventasSvc.myWebSocket.next(this.ventas[0])
   }
 
   estado(estado: string, id: number) {

@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.ventasSvc.myWebSocket.asObservable().subscribe()
+    // this.ventasSvc.myWebSocket.asObservable().subscribe()
 
   }
 
@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
     } 
     this.ventasSvc.post(venta).subscribe({
       next: (res:VentaInDB) => {
-        this.ventasSvc.myWebSocket.next(res)
+        // this.ventasSvc.myWebSocket.next(res)
         Swal.fire({
           title:'Su pedido se recibió de manera exitosa',
           text: '¿Quieres descargar tu factura?',

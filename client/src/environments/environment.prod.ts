@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: false,
+  ruta: 'backend/api/v1/',
+  cookieToken: 'token'
 };

@@ -22,16 +22,16 @@ export class VentasComponent implements OnInit {
 
   sendMessage() {
     console.log('mensaje')
-    this.ventasSvc.myWebSocket.next({otracosa: 'Texto'})
+    // this.ventasSvc.myWebSocket.next({otracosa: 'Texto'})
   }
   ngOnInit() {
-    this.ventasSvc
-      .myWebSocket
-      .asObservable()
-      .subscribe((message: any) => {
-        console.log(message)
-        this.messageList.push(message);
-      });
+    // this.ventasSvc
+    //   .myWebSocket
+    //   .asObservable()
+    //   .subscribe((message: any) => {
+    //     console.log(message)
+    //     this.messageList.push(message);
+    //   });
   }
 
 }
